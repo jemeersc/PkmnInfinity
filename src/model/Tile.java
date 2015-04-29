@@ -30,9 +30,9 @@ public class Tile {
     private AbstractObject field, object;
 
     /**
-     * Creates a new Tile-objecct with the given Point and Object.
-     * @param p Point
-     * @param o AbstractObject
+     * Creates a new Tile-object on the given location and containing the given Object.
+     * @param p the location of the tile
+     * @param o the object the tile should contain
      */
     public Tile(Point p, AbstractObject o) {
         this.p = p;
@@ -41,7 +41,7 @@ public class Tile {
     }
 
     /**
-     * Creates a new Tile-object with the given Point.
+     * Creates a new Tile-object on the given location.
      * @param p Point
      */
     public Tile(Point p) {
@@ -50,7 +50,7 @@ public class Tile {
 
     /**
      * Returns the object that represents the field on this Tile.
-     * @return AbstractObject
+     * @return the field object
      */
     public AbstractObject getField() {
         return field;
@@ -58,23 +58,23 @@ public class Tile {
 
     /**
      * Sets the object that represents the field on this Tile.
-     * @param o AbstractObject
+     * @param o the field object
      */
     public void setField(AbstractObject o) {
         this.field = o;
     }
 
     /**
-     * Returns the object that occurs on this Tile.
-     * @return AbstractObject
+     * Returns the object that this Tile contains.
+     * @return the containing object
      */
     public AbstractObject getObject() {
         return object;
     }
 
     /**
-     * Seets the object that occurs on this Tile.
-     * @param object
+     * Seets the object that this Tile contains.
+     * @param object the containing object
      */
     public void setObject(AbstractObject object) {
         this.object = object;
@@ -82,7 +82,7 @@ public class Tile {
 
     /**
      * Returns the Point representing the location of the Tile.
-     * @return Point
+     * @return Point representing the location
      */
     public Point getPoint() {
         return p;
@@ -90,16 +90,16 @@ public class Tile {
 
     /**
      * Sets the Point representing the location of the Tile.
-     * @param p
+     * @param p Point representing the location
      */
     public void setPoint(Point p) {
         this.p = p;
     }
 
     /**
-     * Draws the Tile on 
-     * @param c
-     * @param g
+     * Draws the field-image of the tile on the specified component
+     * @param c the component to paint on
+     * @param g the Graphics object to use to paint
      */
     public void drawField(Component c, Graphics g) {
         try {
@@ -111,9 +111,9 @@ public class Tile {
     }
 
     /**
-     *
-     * @param c
-     * @param g
+     * Draws the image of the object this tile contains on the specified component
+     * @param c the component to paint upon
+     * @param g the Graphics object to use to paint
      */
     public void drawObject(Component c, Graphics g) {
         try {
@@ -125,8 +125,8 @@ public class Tile {
     }
 
     /**
-     *
-     * @return
+     * Tells whether the tile can be entered by the player
+     * @return can the tile be entered?
      */
     public boolean isEnterable() {
         return field.isEnterable() && object.isEnterable();
