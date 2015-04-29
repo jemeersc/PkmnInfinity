@@ -20,11 +20,18 @@ import model.objects.walls.WallWallObject;
 import model.objects.walls.WindowWallObject;
 
 /**
- *
- * @author Jens
+ * This class has the task of creating object
+ * @author jemeersc
  */
 public class ObjectFactory {
 
+    /**
+     * Creates a new instance of an extended class of AbstractObject.
+     * The type of which the object will be created depends on the given output-string.
+     * @param outputName the output name of the object, which will depend the type the created object will be
+     * @param p the place in which the object will be created
+     * @return the newly created object
+     */
     public static AbstractObject createObject(String outputName, Place p) {
         if ("grass".equals(outputName)) {
             return new GrassFieldObject();

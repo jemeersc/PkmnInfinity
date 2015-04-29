@@ -7,7 +7,7 @@ package model.objects;
 /**
  * Represents an AbstractObject that is a wall.
  * This object can not be entered.
- * @author Jens
+ * @author jemeersc
  */
 public abstract class WallObject extends AbstractObject{
 

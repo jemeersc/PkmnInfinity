@@ -10,7 +10,7 @@ import view.GameFrame;
 /**
  * This represents an AbstractObject which is empty.
  * This object does not hold other objects, and can be entered.
- * @author Jens
+ * @author jemeersc
  */
 public class EmptyObject extends AbstractObject{
 
@@ -29,7 +29,7 @@ public class EmptyObject extends AbstractObject{
 
     @Override
     public void talk(Direction myDirection) {
-        GameFrame.setText("");
+        //GameFrame.setText("");    //testing
     }
     
     

@@ -10,7 +10,7 @@ import model.Direction;
  * This object represents a field object.
  * This field is used as underground for other objcet.
  * This object can be entered.
- * @author Jens
+ * @author jemeersc
  */
 public abstract class FieldObject extends AbstractObject{
 
@@ -26,7 +26,7 @@ public abstract class FieldObject extends AbstractObject{
  
     @Override
     public void talk(Direction myDirection){
-        //pipi in de broek
+        // Nothing here but us kittens
     }
     
     

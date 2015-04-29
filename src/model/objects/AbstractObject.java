@@ -17,7 +17,7 @@ import view.GamePanel;
 
 /**
  *
- * @author Jens
+ * @author jemeersc
  */
 public abstract class AbstractObject extends Object{
     
@@ -38,7 +38,7 @@ public abstract class AbstractObject extends Object{
     // <editor-fold desc="Constructors">
 
     /**
-     * Returns a new AbstractObjact withe the given size and name.
+     * Returns a new AbstractObjact with the given size and name.
      * @param squareWidth width of the object
      * @param squareHeight height of the object
      * @param name name of the object
@@ -47,12 +47,15 @@ public abstract class AbstractObject extends Object{
         this.squareWidth = squareWidth;
         this.squareHeight = squareHeight;
         this.name = name;
-        currentDirection = Direction.SOUTH;
+        currentDirection = Direction.SOUTH;     // so you see the front of the player
+        
         images = new EnumMap<Direction, Icon>(Direction.class);
         directionlisteners = new HashSet<DirectionListener>();
         transportlisteners = new HashSet<TransportListener>();
         blockedTiles = new HashSet<Point>() {};
-        setImages();
+        
+        // loads the images for the object
+        loadImages();
     }
     
     /**
@@ -84,7 +87,7 @@ public abstract class AbstractObject extends Object{
     // <editor-fold desc="Getters/Setters">
 
     /**
-     * Returns wheither this Object can be entered by other Objects.
+     * Returns whether this Object can be entered by other Objects.
      * @return enterable
      */
     public boolean isEnterable() {
@@ -100,7 +103,7 @@ public abstract class AbstractObject extends Object{
     }
     
     /**
-     * Returns the Icon representing the image for for this object.
+     * Returns the Icon representing the image for this object.
      * The correct image is based on the current direction of the object.
      * @return image
      */
@@ -142,7 +145,7 @@ public abstract class AbstractObject extends Object{
      */
     public void setName(String name) {
         this.name = name;
-        setImages();
+        loadImages();
     }
 
     /**
@@ -177,7 +180,7 @@ public abstract class AbstractObject extends Object{
     /**
      * Sets the Tile on the given Point as blocked.
      * 
-     * Thsi adds the Tile of the given Point to the list of blocked tiles.
+     * This adds the Tile of the given Point to the list of blocked tiles.
      * This Tile will be seen as a part of this object,
      * meaning that this object also covers that Tile.
      * @param r row number of the Tile to be blocked
@@ -208,10 +211,11 @@ public abstract class AbstractObject extends Object{
     // <editor-fold desc="Methods">
 
     /**
-     * Respresents the action that is done when anther objects steps on this object.
+     * Respresents the action that is to be executed when anther objects steps on this object.
+     * This will be overriden by the extending classes
      */
     public void stepOnto(){
-        System.out.println("doet stepOnto");
+        System.out.println("does stepOnto");
     }
     
     // </editor-fold> ----------------------------------------------------------
@@ -219,10 +223,10 @@ public abstract class AbstractObject extends Object{
     // <editor-fold desc="Private methods">
 
     /**
-     * Loads the correct images for this Object
+     * Loads the correct images for all direction of this Object
      */
-    private void setImages(){
-        String s = "South";
+    private void loadImages(){
+        String s = "South";     // for testing
         try{
             images.put(Direction.SOUTH, new ImageIcon("resources/" + name + "S.png")); s = "North";
             images.put(Direction.NORTH, new ImageIcon("resources/" + name + "N.png")); s = "East";
@@ -233,7 +237,7 @@ public abstract class AbstractObject extends Object{
 //            images.put(Direction.EAST, new ImageIcon(AbstractObject.class.getResource("/resources/" + name + "E.png"))); s = "West";
 //            images.put(Direction.WEST, new ImageIcon(AbstractObject.class.getResource("/resources/" + name + "W.png")));
         }catch(Exception e){
-//            System.out.println("fout opgetreden bij openen " + s);
+            System.out.println("Error while opening " + s + " image of " + name);
         }
     }
     
